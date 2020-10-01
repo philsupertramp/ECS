@@ -2,6 +2,24 @@
 
 > Highly influenced by [tsprojectsblog's](https://tsprojectsblog.wordpress.com/portfolio/entity-component-system/) tutorial on ECS'
 
+Entity Container System
+
+## Requirements
+NONE
+
+## installation
+Use the `CMakeLists.txt` file and
+
+Copy repository/Code (you can delete `.git`, `.gitignore`, `example.cpp`, `main.cpp`, `README.md` in case you 
+only want to have the codebase)
+```cmake
+# assuming copy is in root:  
+add_subdirectory(ECS)
+include_directories(ECS/include)
+target_link_libraries(mytarget ECS)
+```
+
+
 # Examples
 
 ## Entities:
