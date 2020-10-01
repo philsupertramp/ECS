@@ -13,6 +13,7 @@ namespace ECS {
         ECS_ComponentManager	= new ComponentManager();
         ECS_EntityManager		= new EntityManager();
         ECS_SystemManager       = new SystemManager();
+        ECS_EventHandler       = new Event::EventHandler();
     }
 
     ECSEngine::~ECSEngine() {
@@ -24,6 +25,9 @@ namespace ECS {
 
         delete ECS_SystemManager;
         ECS_SystemManager = nullptr;
+
+        delete ECS_EventHandler;
+        ECS_EventHandler = nullptr;
     }
 
     void ECSEngine::Update(f32 tick_ms) {
@@ -32,8 +36,14 @@ namespace ECS {
 
         // Update all running systems
         ECS_SystemManager->Update(tick_ms);
+        ECS_EventHandler->DispatchEvents();
 
         // Finalize pending destroyed entities
         ECS_EntityManager->RemoveDestroyedEntities();
+        ECS_EventHandler->DispatchEvents();
+    }
+
+    void ECSEngine::UnsubscribeEvent(Event::IEventDelegate *eventDelegate) {
+        ECS_EventHandler->RemoveEventCallback(eventDelegate);
     }
 }

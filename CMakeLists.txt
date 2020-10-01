@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 project(ECS)
 
 # In case you want to build the example, uncomment this line
-#set(ECS_BUILD_EXAMPLE)
+set(ECS_BUILD_EXAMPLE TRUE)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -22,7 +22,7 @@ set(ECS_SOURCES
     src/ECS/ComponentManager.cpp
     src/ECS/ISystem.cpp
     src/ECS/SystemManager.cpp
-)
+        include/ECS/event/IEvent.cpp include/ECS/event/IEvent.h include/ECS/event/IEventListener.cpp include/ECS/event/IEventListener.h include/ECS/event/EventHandler.cpp include/ECS/event/EventHandler.h)
 
 set(ECS_HEADERS
         include/ECS/entity/IEntity.h
@@ -47,7 +47,7 @@ set(ECS_HEADERS
         include/ECS/system/ISystem.h
         include/ECS/system/System.h
         include/ECS/system/SystemManager.h
-)
+        include/ECS/event/Event.h include/ECS/event/IEvent.cpp include/ECS/event/IEvent.h include/ECS/event/IEventListener.cpp include/ECS/event/IEventListener.h include/ECS/event/EventDelegate.h include/ECS/event/IEventDispatcher.h include/ECS/event/IEventDelegate.h include/ECS/event/EventHandler.cpp include/ECS/event/EventHandler.h include/ECS/event/EventDispatcher.h)
 
 add_library(ECS SHARED ${ECS_SOURCES} ${ECS_HEADERS})
 

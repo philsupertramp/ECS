@@ -110,7 +110,6 @@ namespace ECS
     static const SystemPriority HIGHEST_SYSTEM_PRIORITY		= std::numeric_limits<SystemPriority>::max();
 
 
-
     union TimeStamp
     {
         f32 asFloat;
@@ -131,6 +130,14 @@ namespace ECS
         inline const bool operator>(const TimeStamp& other) const { return this->asFloat > other.asFloat; }
 
     }; // union TimeStamp
+
+    using EventTypeId		= TypeID;
+    using EventTimestamp	= TimeStamp;
+    using EventDelegateId = size_t;
+
+    static const EventTypeId INVALID_EVENTTYPE = INVALID_TYPE_ID;
+
+
 
 } // namespace ECS
 
