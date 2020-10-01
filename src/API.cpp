@@ -8,9 +8,8 @@
 namespace ECS {
     MemoryManager* ECSMemoryManager = new MemoryManager();
 
-    GlobalMemoryUser::GlobalMemoryUser(): ECS_MEMORY_MANAGER(ECSMemoryManager) {
-
-    }
+    GlobalMemoryUser::GlobalMemoryUser(): ECS_MEMORY_MANAGER(ECSMemoryManager)
+    {}
 
     GlobalMemoryUser::~GlobalMemoryUser() {
 

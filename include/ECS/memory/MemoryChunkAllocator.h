@@ -67,31 +67,33 @@ namespace ECS {
 		///-------------------------------------------------------------------------------------------------
 		/// Class:	iterator
 		///
-		/// Summary:	An iterator for linear search actions in allocated memory chungs.
+		/// Summary:	An iterator for linear search actions in allocated memory chunks.
 		///
 		/// Author:	Tobias Stein
 		///
 		/// Date:	24/09/2017
 		///-------------------------------------------------------------------------------------------------
 
-		class iterator : public std::iterator<std::forward_iterator_tag, OBJECT_TYPE>
-		{
+		class iterator : public std::iterator<std::forward_iterator_tag, OBJECT_TYPE> {
 			typename MemoryChunks::iterator	m_CurrentChunk;
 			typename MemoryChunks::iterator	m_End;
 
 			typename ObjectList::iterator	m_CurrentObject;
 
-
 			public:
 
-				iterator(typename MemoryChunks::iterator begin, typename MemoryChunks::iterator end) :
-					m_CurrentChunk(begin),
-					m_End(end)
+				iterator(typename MemoryChunks::iterator begin, typename MemoryChunks::iterator end)
+				: m_CurrentChunk(begin),
+				  m_End(end)
 				{				
 					if (begin != end)
 					{	
 						assert((*m_CurrentChunk) != nullptr);
 						m_CurrentObject = (*m_CurrentChunk)->objects.begin();
+						if(m_CurrentObject == (*m_CurrentChunk)->objects.end()) {
+                            m_CurrentObject = (*std::prev(m_End))->objects.end();
+                            m_CurrentChunk = m_End;
+                        }
 					}
 					else
 					{

@@ -21,6 +21,9 @@ namespace ECS {
 
         delete ECS_ComponentManager;
         ECS_ComponentManager = nullptr;
+
+        delete ECS_SystemManager;
+        ECS_SystemManager = nullptr;
     }
 
     void ECSEngine::Update(f32 tick_ms) {
@@ -28,6 +31,7 @@ namespace ECS {
         ECS_EngineTime += tick_ms;
 
         // Update all running systems
+        ECS_SystemManager->Update(tick_ms);
 
         // Finalize pending destroyed entities
         ECS_EntityManager->RemoveDestroyedEntities();

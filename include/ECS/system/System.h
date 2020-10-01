@@ -7,6 +7,7 @@
 
 #include "ISystem.h"
 #include "../Engine.h"
+#include "SystemManager.h"
 
 namespace ECS {
     template <class S>
@@ -17,13 +18,9 @@ namespace ECS {
 
         static const SystemTypeId STATIC_SYSTEM_TYPE_ID;
 
-    protected:
-
         System()
         {
         }
-
-    public:
 
         virtual ~System()
         {

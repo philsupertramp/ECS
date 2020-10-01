@@ -13,6 +13,7 @@
 
 #include "ECS/entity/EntityManager.h"
 #include "ECS/component/ComponentManager.h"
+#include "ECS/system/SystemManager.h"
 
 #include "Engine.h"
 

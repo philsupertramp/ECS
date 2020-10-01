@@ -11,12 +11,14 @@ namespace ECS {
 
     class IEntity;
     class IComponent;
+    class ISystem;
 
     template class FamilyTypeID<IEntity>;
     template class FamilyTypeID<IComponent>;
-//    template class FamilyTypeID<ISystem>;
-    template<> u64 FamilyTypeID<IEntity>::s_count			= 0u;
-    template<> u64 FamilyTypeID<IComponent>::s_count		= 0u;
+    template class FamilyTypeID<ISystem>;
+    template<> u64 FamilyTypeID<IEntity>::s_count		= 0u;
+    template<> u64 FamilyTypeID<IComponent>::s_count		    = 0u;
+    template<> u64 FamilyTypeID<ISystem>::s_count		= 0u;
 }
 
 #endif //ECS_FAMILYTYPEID_CPP

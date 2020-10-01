@@ -29,6 +29,8 @@ namespace ECS {
 
         }; // class IEntityContainer
 
+        // EntityContainer
+    public:
         template<class T>
         class EntityContainer :public MemoryChunkAllocator<T, ENITY_T_CHUNK_SIZE>, public IEntityContainer
         {
@@ -52,13 +54,14 @@ namespace ECS {
             /* TODO: might need check */
             void DestroyEntity(IEntity* object) {
                 // call d'tor
-//                object->~IEntity();
+                object->~IEntity();
 
                 this->DestroyObject(object);
             }
 
-        }; // EntityContainer
+        };
 
+    private:
         using EntityRegistry = std::unordered_map<EntityTypeId, IEntityContainer*>;
         EntityRegistry m_EntityRegistry;
 
