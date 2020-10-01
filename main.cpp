@@ -1,7 +1,9 @@
 #include "example.h"
 
 int main(int nargs, char* argv[]){
-    systemExample();
+//    simpleExample();
+//    systemExample();
+    signalExample();
 
     return 0;
 }

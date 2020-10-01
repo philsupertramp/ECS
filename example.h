@@ -110,4 +110,8 @@ void systemExample(){
     // expects output
 }
 
+void signalExample(){
+
+}
+
 #endif //ECS_EXAMPLE_H
