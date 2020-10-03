@@ -12,6 +12,8 @@ namespace ECS {
 
     class ISystem
     {
+        template<class T>
+        friend class System;
         friend class SystemManager;
 
     private:

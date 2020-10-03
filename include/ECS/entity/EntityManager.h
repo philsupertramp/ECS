@@ -103,12 +103,12 @@ namespace ECS {
         ~EntityManager();
 
         template<class T, class... ARGS>
-        IEntity* CreateEntity(ARGS&&... args) {
+        T* CreateEntity(ARGS&&... args) {
             // aqcuire memory for new entity object of type T
             void* pObjectMemory = GetEntityContainer<T>()->CreateObject();
 
             // create entity inplace
-            IEntity* entity = new (pObjectMemory)T(std::forward<ARGS>(args)...);
+            T* entity = new (pObjectMemory)T(std::forward<ARGS>(args)...);
 
             return entity;
         }

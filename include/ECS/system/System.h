@@ -19,27 +19,25 @@ namespace ECS {
         static const SystemTypeId STATIC_SYSTEM_TYPE_ID;
 
         System()
-        {
-        }
+        { }
 
         virtual ~System()
-        {
-        }
+        { }
 
-        virtual inline const SystemTypeId GetStaticSystemTypeID() const
-        {
+        void SetActive(bool val) { m_Enabled = val; }
+        bool IsActive() { return m_Enabled; }
+
+        virtual inline const SystemTypeId GetStaticSystemTypeID() const {
             return STATIC_SYSTEM_TYPE_ID;
         }
 
-        virtual inline const char* GetSystemTypeName() const override
-        {
+        virtual inline const char* GetSystemTypeName() const override {
             static const char* SYSTEM_TYPE_NAME { typeid(S).name() };
             return SYSTEM_TYPE_NAME;
         }
 
         template<class... Dependencies>
-        void AddDependencies(Dependencies&&... dependencies)
-        {
+        void AddDependencies(Dependencies&&... dependencies) {
             ECS_Engine->GetSystemManager()->AddSystemDependency(this, std::forward<Dependencies>(dependencies)...);
         }
 
@@ -52,6 +50,7 @@ namespace ECS {
 
         virtual void PostUpdate(f32 dt) override
         {}
+
     };
 
     template<class T>
