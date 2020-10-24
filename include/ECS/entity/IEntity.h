@@ -45,6 +45,8 @@ namespace ECS {
         virtual const EntityTypeId GetStaticEntityTypeID() const = 0;
         inline void SetActive(bool val) { m_IsActive = val; }
         inline bool IsActive() { return m_IsActive; }
+
+        virtual void Render() {}
     };
 }
 
