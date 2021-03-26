@@ -9,6 +9,16 @@
 #include "../Engine.h"
 #include "SystemManager.h"
 
+#include <cstring>
+
+struct cmp_str
+{
+    bool operator()(char const *a, char const *b) const
+    {
+        return strcmp(a, b) < 0;
+    }
+};
+
 namespace ECS {
     template <class S>
     class System
