@@ -159,12 +159,14 @@ namespace ECS {
                     // get appropriate component container
                     auto it = this->m_ComponentContainerRegistry.find(componentTypeId);
                     if (it != this->m_ComponentContainerRegistry.end())
+                    {
                         it->second->DestroyComponent(component);
-                    else
-                        assert(false && "Trying to release a component that wasn't created by ComponentManager!");
+                        //                    else
+                        //                        assert(false && "Trying to release a component that wasn't created by ComponentManager!");
 
-                    // unmap entity id to component id
-                    UnmapEntityComponent(entityId, componentId, componentTypeId);
+                        // unmap entity id to component id
+                        UnmapEntityComponent(entityId, componentId, componentTypeId);
+                    }
                 }
             }
         }

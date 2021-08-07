@@ -23,6 +23,11 @@ namespace ECS {
             if (this) return ECS_Engine->GetComponentManager()->GetComponent<T>(this->m_EntityID);
             return nullptr;
         }
+        template<class T>
+        inline T* GetComponents(){
+            if (this) return ECS_Engine->GetComponentManager()->GetComponent<T>(this->m_EntityID);
+            return nullptr;
+        }
 
         template<class T, class ...A>
         inline T* CreateComponent(A&&... param){
@@ -45,8 +50,6 @@ namespace ECS {
         virtual const EntityTypeId GetStaticEntityTypeID() const = 0;
         inline void SetActive(bool val) { m_IsActive = val; }
         inline bool IsActive() { return m_IsActive; }
-
-        virtual void Render() {}
     };
 }
 
